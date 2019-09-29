@@ -1,0 +1,19 @@
+{
+  "name": "the-super-tiny-ts-compiler",
+  "version": "1.0.0",
+  "description": "a tiny compiler written in TypeScript",
+  "main": "index.js",
+  "scripts": {
+    "start": "yarn build:watch",
+    "build": "tsc -p .",
+    "build:watch": "tsc -w"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^12.7.8",
+    "ts-node": "^8.4.1",
+    "typescript": "^3.6.3"
+  }
+}
