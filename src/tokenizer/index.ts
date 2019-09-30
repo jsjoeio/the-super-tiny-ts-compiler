@@ -2,7 +2,7 @@ const WHITESPACE = /\s/;
 const NUMBERS = /[0-9]/;
 const LETTERS = /[a-z]/;
 
-type Token = { type: string; value: string };
+export type Token = { type: string; value: string };
 
 /**
  * ============================================================================
