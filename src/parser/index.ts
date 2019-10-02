@@ -1,10 +1,31 @@
 import { Token } from '../tokenizer';
 
-type Node = { type: string; value: string; params?: Node[] };
-type CallExpressionNode = { type: string; name: string; params: Array<NodeOrCallExpressionNode> };
+export type ASTNode = {
+  // this is a type literal
+  type: 'Program';
+  body: Array<NodeOrCallExpressionNode>;
+}
+
+export type CallExpressionNode = {
+  type: 'CallExpression';
+  name: string;
+  params: Node[];
+};
+
+export type StringLiteralNode = {
+  type: 'StringLiteral';
+  value: string;
+}
+
+export type NumberLiteralNode = {
+  type: 'NumberLiteral';
+  value: string;
+}
+
+// discriminated union type
+export type Node = ASTNode | CallExpressionNode | StringLiteralNode | NumberLiteralNode
 // This is a union type
 type NodeOrCallExpressionNode = Node | CallExpressionNode;
-type AST = { type: string; body: Array<NodeOrCallExpressionNode> };
 /**
  * ============================================================================
  *                                 ヽ/❀o ل͜ o\ﾉ
@@ -82,7 +103,7 @@ export function parser(tokens: readonly Token[]) {
   }
 
   // Now, we're going to create our AST which will have a root which is a Program node
-  let ast: AST = {
+  let ast: ASTNode = {
     type: 'Program',
     body: [],
   };
