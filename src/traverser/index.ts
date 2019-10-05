@@ -1,4 +1,4 @@
-import { ASTNode, Node } from '../parser';
+import { ASTNode, Node } from '../types';
 
 export type ParentNode = Node | null;
 

@@ -26,38 +26,26 @@ export function transformer(ast: ASTNode) {
       enter(node: NumberLiteralNode, parent: Node) {
         // We'll create a new node also named 'NumberLiteral' that we will push
         // to the parent context
-        if (parent._context) {
-          parent._context = parent._context.concat({
-            type: 'NumberLiteral',
-            value: node.value,
-          });
-        } else {
-          parent._context = [
-            {
-              type: 'NumberLiteral',
-              value: node.value,
-            },
-          ];
+        if (!parent._context) {
+          parent._context = [];
         }
+        parent._context.push({
+          type: 'NumberLiteral',
+          value: node.value,
+        });
       },
     },
 
     // Next we'll have a StringLiteral
     StringLiteral: {
       enter(node: StringLiteralNode, parent: Node) {
-        if (parent._context) {
-          parent._context = parent._context.concat({
-            type: 'StringLiteral',
-            value: node.value,
-          });
-        } else {
-          parent._context = [
-            {
-              type: 'StringLiteral',
-              value: node.value,
-            },
-          ];
+        if (!parent._context) {
+          parent._context = [];
         }
+        parent._context.push({
+          type: 'StringLiteral',
+          value: node.value,
+        });
       },
     },
 
@@ -91,13 +79,11 @@ export function transformer(ast: ASTNode) {
         }
 
         // Last we'll push our (possibly wrapped) CallExpression to the parents context
-        if (parent._context) {
-          // @ts-ignore
-          parent._context = parent._context.concat(expression);
-        } else {
-          // @ts-ignore
-          parent._context = [expression];
+        if (!parent._context) {
+          parent._context = [];
         }
+        //@ts-ignore
+        parent._context.push(expression);
       },
     },
   });
