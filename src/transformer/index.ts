@@ -5,9 +5,9 @@ import {
   StringLiteralNode,
   CallExpressionNode,
   TransformedCallExpressionNode,
-} from '../parser';
+  ExpressionStatementNode,
+} from '../types';
 import { traverser } from '../traverser';
-import { ExpressionStatementNode } from '../parser/index';
 
 export function transformer(ast: ASTNode) {
   // We'll create a newAST

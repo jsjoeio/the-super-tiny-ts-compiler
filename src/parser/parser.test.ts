@@ -12,7 +12,7 @@ describe('parser', () => {
     // It should have a body property
     expect(Array.isArray(actual.body)).toBe(true);
   });
-  it('should trun `tokens` array into `ast`', () => {
+  it('should turn `tokens` array into `ast`', () => {
     const tokens = [
       { type: 'paren', value: '(' },
       { type: 'name', value: 'add' },
