@@ -18,7 +18,8 @@ export type TransformedCallExpressionNode = {
     type: 'Identifier';
     name: string;
   };
-  arguments: any[];
+  arguments: Node[];
+  _context?: Node[];
 };
 
 export type ExpressionStatementNode = {
@@ -39,4 +40,4 @@ export type NumberLiteralNode = {
 };
 
 // discriminated union type
-export type Node = ASTNode | CallExpressionNode | StringLiteralNode | NumberLiteralNode;
+export type Node = ASTNode | CallExpressionNode | StringLiteralNode | NumberLiteralNode | TransformedCallExpressionNode;

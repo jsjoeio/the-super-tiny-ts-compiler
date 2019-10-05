@@ -63,7 +63,7 @@ export function transformer(ast: ASTNode) {
         };
 
         // Next we're going to define a new context on the original
-        // to erefence the expression's arguments
+        // to reference the expression's arguments
         // so that we can push arguments.
         node._context = expression.arguments;
 
